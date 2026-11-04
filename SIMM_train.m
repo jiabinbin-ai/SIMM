@@ -20,7 +20,7 @@ function Model = SIMM_train( X_train, y_train, NumK )
 %						Model.model_c stores the parameters of the models that combine the feature-based and label-based similarity
 %                       Model.C_y_pair stores the pairwise powerset transformation parameters
 %
-%  [1] B.-B. Jia, T. Huang, M.-L. Zhang. A Similarity-based Approach for Multi-Dimensional Classification, 2026.
+%  [1] B.-B. Jia, T. Huang, M.-L. Zhang. A Similarity-based Approach for Multi-Dimensional Classification, In: Pattern Recognition, 2026.
 %
 %See also SIMM_test and sim_info_gen.
 
@@ -53,7 +53,7 @@ function Model = SIMM_train( X_train, y_train, NumK )
     model_t = cell(num_dim,1);
     sim_info_vec_l_tr = cell(num_dim,1);%similarity information vector in label space for training samples
     for dd=1:num_dim
-        model_t{dd} = train(y_train(:,dd),sparse(X_train),'-s 6 -B 1 -q');
+        model_t{dd} = train(y_train(:,dd),sparse(X_train),'-s 6 -B 1 -q');%L1-regularized logistic regression
         [~, ~, p_tr] = predict(ones(num_training,1), sparse(X_train), model_t{dd}, '-q');
         index_k_plus_1 = knnsearch(p_tr,p_tr,'K',NumK+1);
 		index_l_tr_dd = index_k_plus_1(:,2:end);%exclude the instance itself in training set
@@ -70,7 +70,7 @@ function Model = SIMM_train( X_train, y_train, NumK )
             sim_info_vec_f_tr_dd2 = sim_info_vec_f_tr{dd2};
             [C_y_pair{dd1,dd2},~,y_pair_cp{dd1,dd2}] = unique(y_train(:,[dd1,dd2]),'rows');
             sim_info_vec_f_tr_pair = [sim_info_vec_f_tr_dd1, sim_info_vec_f_tr_dd2];
-            model_f{dd1,dd2} = train(y_pair_cp{dd1,dd2},sparse(sim_info_vec_f_tr_pair),'-s 6 -B 1 -q');
+            model_f{dd1,dd2} = train(y_pair_cp{dd1,dd2},sparse(sim_info_vec_f_tr_pair),'-s 6 -B 1 -q');%L1-regularized logistic regression
         end
     end
     %(3-2)synergize the label-based similarity information
@@ -80,7 +80,7 @@ function Model = SIMM_train( X_train, y_train, NumK )
         for dd2=dd1+1:num_dim
             sim_info_vec_l_tr_dd2 = sim_info_vec_l_tr{dd2};
             sim_info_vec_l_tr_pair = [sim_info_vec_l_tr_dd1, sim_info_vec_l_tr_dd2];
-            model_l{dd1,dd2} = train(y_pair_cp{dd1,dd2},sparse(sim_info_vec_l_tr_pair),'-s 6 -B 1 -q');
+            model_l{dd1,dd2} = train(y_pair_cp{dd1,dd2},sparse(sim_info_vec_l_tr_pair),'-s 6 -B 1 -q');%L1-regularized logistic regression
         end
     end
     %(3-3)combine the feature-based and label-based similarity information

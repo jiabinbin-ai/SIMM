@@ -21,7 +21,7 @@ function [ Eval,y_predict ] = SIMM_test( Model, X_train, y_train, X_test, y_test
 %						Eval.SEM correpsonds to the sub-exact match on testing data as described in [1]
 %       y_predict	- An pxq array, the predicted class matrix for test instance matrix X_test
 %
-%  [1] B.-B. Jia, T. Huang, M.-L. Zhang. A Similarity-based Approach for Multi-Dimensional Classification, 2026.
+%  [1] B.-B. Jia, T. Huang, M.-L. Zhang. A Similarity-based Approach for Multi-Dimensional Classification, In: Pattern Recognition, 2026.
 %
 %See also SIMM_train and sim_info_gen.
 

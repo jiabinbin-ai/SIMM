@@ -1,6 +1,14 @@
 %This is an examplar file on how the SIMM algorithm could be used
 %Type 'help SIMM_train' and 'help SIMM_test' under Matlab prompt for more detailed information
+%
+%This implementation calls the pre-compiled MEX binaries (train.mexw64 and predict.mexw64) from
+%the LIBLINEAR library to perform L1-regularized logistic regression. The LIBLINEAR library is 
+%available at https://www.csie.ntu.edu.tw/~cjlin/liblinear/. For users on non-Windows platforms, 
+%please visit the official LIBLINEAR website to obtain the source code and compile the binaries 
+%for your specific operating system.
+%
 clear;clc;close all;fclose('all');
+
 %more data sets are publicly available at: 
 %https://palm.seu.edu.cn/zhangml/Resources.htm#MDC_data
 load_data = load('Enb.mat');%load the MDC data
@@ -40,6 +48,9 @@ for numFold=1:numFolds
     SEM(numFold) = Eval.SEM;
 end
 %disp experimental results
+temp_str = '\nThe experimental results:\n';
+fprintf(all_fid,temp_str);
+
 temp_str = ['HS   : ', num2str(mean(HS),'%4.3f'),' ¡À ',num2str(std(HS),'%4.3f'),'\n'];
 fprintf(all_fid,temp_str);
 

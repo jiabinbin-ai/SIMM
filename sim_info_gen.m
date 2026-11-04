@@ -9,10 +9,10 @@ function [ sim_info_vec, KNN_test_idx] = sim_info_gen( dist_idx, y_train )
 %
 %   sim_info_gen takes,
 %       dist_idx	- An pxK array, the KNN index for the ith test instance is stored in dist_idx(i,:)
-%       y_train     - An mxq array, the ith class vector of training instance is stored in y_train(i,:)
+%       y_train     - An mx1 array, the class of the ith training instance is stored in y_train(i)
 %   and returns,
-%       sim_info_vec	- KNN statistics of train set
-%       KNN_test_idx	- KNN index of test set
+%       sim_info_vec	- KNN statistics of training set
+%       KNN_test_idx	- KNN index of test set (output for convenience)
 
 
     %% default parameters setting
@@ -33,5 +33,6 @@ function [ sim_info_vec, KNN_test_idx] = sim_info_gen( dist_idx, y_train )
             sim_info_vec(ii,iclass) = sum(y_train_ii==C(iclass));
         end
     end
+    
     KNN_test_idx = dist_idx;
 end
