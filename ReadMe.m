@@ -1,4 +1,4 @@
-%This is an examplar file on how the SIMM algorithm could be used
+%This is an exemplar file on how the SIMM algorithm could be used
 %Type 'help SIMM_train' and 'help SIMM_test' under Matlab prompt for more detailed information
 %
 %This implementation calls the pre-compiled MEX binaries (train.mexw64 and predict.mexw64) from
@@ -51,13 +51,13 @@ end
 temp_str = '\nThe experimental results:\n';
 fprintf(all_fid,temp_str);
 
-temp_str = ['HS   : ', num2str(mean(HS),'%4.3f'),' ¡À ',num2str(std(HS),'%4.3f'),'\n'];
+temp_str = ['HS   : ', num2str(mean(HS),'%4.3f'),' Â¡Ã€ ',num2str(std(HS),'%4.3f'),'\n'];
 fprintf(all_fid,temp_str);
 
-temp_str = ['EM   : ', num2str(mean(EM),'%4.3f'),' ¡À ',num2str(std(EM),'%4.3f'),'\n'];
+temp_str = ['EM   : ', num2str(mean(EM),'%4.3f'),' Â¡Ã€ ',num2str(std(EM),'%4.3f'),'\n'];
 fprintf(all_fid,temp_str);
 
-temp_str = ['SEM  : ', num2str(mean(SEM),'%4.3f'),' ¡À ',num2str(std(SEM),'%4.3f'),'\n'];
+temp_str = ['SEM  : ', num2str(mean(SEM),'%4.3f'),' Â¡Ã€ ',num2str(std(SEM),'%4.3f'),'\n'];
 fprintf(all_fid,temp_str);
 
 finish_clock = clock;
