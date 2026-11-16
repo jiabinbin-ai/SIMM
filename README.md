@@ -1,7 +1,7 @@
 # SIMM
 This repository provides the MATLAB implementation for the following article:
 
-B.-B. Jia, T. Huang, M.-L. Zhang. A Similarity-based Approach for Multi-Dimensional Classification, In: Pattern Recognition, 2026.
+B.-B. Jia, T. Huang, M.-L. Zhang. [A Similarity-based Approach for Multi-Dimensional Classification](https://doi.org/10.1016/j.patcog.2026.115311), In: Pattern Recognition, vol.184, article number 115311, 2027.
 
 "SIMM_train.m" and "SIMM_test.m" are the train and test functions of this algorithm and "ReadMe.m" is an exemplar file on how the SIMM_train and SIMM_test program could be used.
 
